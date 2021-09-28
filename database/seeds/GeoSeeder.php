@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Geo;
 use Illuminate\Database\Seeder;
 
 class GeoSeeder extends Seeder
@@ -11,6 +12,6 @@ class GeoSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(Geo::class,10)->create();
     }
 }
