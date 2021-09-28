@@ -24,7 +24,13 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+         $schedule->command('user:daily')->everyMinute();
+         $schedule->command('post:daily')->everyMinute();
+    }
+
+    public function scheduleTimezone()
+    {
+        return "Europe/Paris";
     }
 
     /**
