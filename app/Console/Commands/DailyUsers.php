@@ -39,6 +39,7 @@ class DailyUsers extends Command
     public function handle()
     {
         (new User)->createUser();
-        echo "nowy user";
+
+        $this->info("users saved");
     }
 }

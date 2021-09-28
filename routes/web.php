@@ -13,5 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', function (){
+    return redirect()->route("get.posts");
+});
+
 Route::get('posts', "PostController@index")->name('get.posts');
 Route::get('users', "UserController@index")->name('get.users');

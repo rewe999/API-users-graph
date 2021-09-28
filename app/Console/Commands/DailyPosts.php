@@ -39,16 +39,22 @@ class DailyPosts extends Command
      */
     public function handle()
     {
-        $posts = Http::get("https://jsonplaceholder.typicode.com/posts")->json();
+        try {
+            $posts = Http::get("https://jsonplaceholder.typicode.com/posts")->json();
 
-        foreach ($posts as $post) {
-            $article = new Post();
-            $article->title = $post["title"];
-            $article->body = $post["body"];
-            $article->userId = $post["userId"];
-            $article->save();
+            Post::truncate();
+            foreach ($posts as $post) {
+                $article = new Post();
+                $article->title = $post["title"];
+                $article->body = $post["body"];
+                $article->userId = $post["userId"];
+                $article->save();
+            }
+
+            $this->info("posts saved");
+        }catch (\Exception $exception){
+            $this->info("wrong ULR");
         }
 
-        $this->info("posts saved");
     }
 }

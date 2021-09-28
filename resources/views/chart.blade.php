@@ -2,8 +2,10 @@
 @section('body')
 
 <div class="container">
-    <div class="row">
-        <canvas id="myChart"></canvas>
+    <div class="d-flex justify-content-center">
+        <div class="row chart">
+            <canvas id="myChart"></canvas>
+        </div>
     </div>
 </div>
 
@@ -37,7 +39,7 @@
                     'rgba(112, 21, 37, 0.6)',
                     'rgba(65, 99, 132, 0.6)',
                     'rgba(255, 99, 1, 0.6)',
-                    'rgba(25, 199, 32, 0.6)'
+                    'rgba(25, 199, 32, 0.6)',
                 ],
                 borderWidth:1,
                 borderColor:'#777',
@@ -72,5 +74,12 @@
         }
     });
 </script>
+
+<style>
+    .chart {
+        width: 50vw;
+        height: 50vh;
+    }
+</style>
 
 @endsection
