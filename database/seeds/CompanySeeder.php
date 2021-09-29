@@ -1,8 +1,8 @@
 <?php
 
-use App\Models\Company;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
-
+use Faker\Factory as Faker;
 class CompanySeeder extends Seeder
 {
     /**
@@ -12,6 +12,14 @@ class CompanySeeder extends Seeder
      */
     public function run()
     {
-        factory(Company::class,10)->create();
+        $faker = Faker::create();
+
+        foreach (range(1,10) as $index){
+            DB::table('companies')->insert([
+                'name' => $faker->name,
+                'catchPhrase' => $faker->sentence(6),
+                'bs' => $faker->sentence(5),
+            ]);
+        }
     }
 }

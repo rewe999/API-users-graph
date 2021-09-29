@@ -1,7 +1,8 @@
 <?php
 
-use App\Models\Geo;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Faker\Factory as Faker;
 
 class GeoSeeder extends Seeder
 {
@@ -12,6 +13,13 @@ class GeoSeeder extends Seeder
      */
     public function run()
     {
-        factory(Geo::class,10)->create();
+        $faker = Faker::create();
+
+        foreach (range(1,10) as $index){
+            DB::table('geos')->insert([
+                'lat' => $faker->latitude,
+                'lng' => $faker->longitude,
+            ]);
+        }
     }
 }

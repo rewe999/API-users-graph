@@ -1,7 +1,9 @@
 <?php
 
-use App\Models\Post;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Faker\Factory as Faker;
 
 class PostSeeder extends Seeder
 {
@@ -12,6 +14,16 @@ class PostSeeder extends Seeder
      */
     public function run()
     {
-        factory(Post::class,10)->create();
+        $faker = Faker::create();
+
+        foreach (range(1,10) as $index){
+            DB::table('posts')->insert([
+                'title' => $faker->sentence(5),
+                'body' => $faker->text,
+                'userId' => User::all()->random()->id,
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
+            ]);
+        }
     }
 }

@@ -24,8 +24,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-         $schedule->command('user:daily')->everyMinute();
-         $schedule->command('post:daily')->everyMinute();
+         $schedule->command('user:daily')->daily();
+         $schedule->command('post:daily')->daily();
     }
 
     public function scheduleTimezone()
